@@ -112,6 +112,8 @@ const Channel = () =>{
                         // console.log(setUpRolesList)
                         if(setUpRolesList.length!=0){
                             setSetUpRolesList(setUpRolesList)
+                        }else{
+                            setSetUpRolesList([[{name: "", id: "", color:"0"}]])
                         }
 
                     }else {
