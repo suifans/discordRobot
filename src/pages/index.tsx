@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import {useRouter} from "next/router";
-import Home from "./dashboards";
 import Login from "./login";
 
 const IndexPage: NextPage = () => {

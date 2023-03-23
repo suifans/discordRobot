@@ -10,7 +10,7 @@ const Loading = () =>{
     return(
         <>
             <Transition.Root show={openLoading} as={Fragment}>
-                <Dialog as="div" className="relative z-50" onClose={()=>false}>
+                <Dialog as="div" className="relative z-40" onClose={()=>false}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -20,7 +20,7 @@ const Loading = () =>{
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-gray-800 bg-opacity-90 transition-opacity" />
+                        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
                     </Transition.Child>
 
                     <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -36,7 +36,9 @@ const Loading = () =>{
                             >
                                 <Dialog.Panel className="">
 
-                                    <img className="w-72 " src="/loading.gif" alt=""/>
+                                    <div className="animate-spin text-white">
+                                        <i className="fa fa-spinner f-spin fa-2x fa-fw"></i>
+                                    </div>
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>

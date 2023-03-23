@@ -26,6 +26,15 @@ module.exports = {
                 '100':"33rem",
                 '104':"38rem",
             },
+            colors:{
+                transparent: 'transparent',
+                current: 'currentColor',
+                custom:{
+                    DEFAULT:'#292828',
+                    light:"#292828",
+                    dark:"#292828",
+                },
+            }
 
         },
         variants: {

@@ -2,12 +2,18 @@ import {Dialog, Transition} from "@headlessui/react";
 import {Fragment, useEffect, useState} from "react";
 import {HomeIcon, XMarkIcon} from "@heroicons/react/24/outline";
 import {useAtom} from "jotai";
-import {DiscordList, MobileMenuOpen} from "../../jotai";
+import {DiscordList, DiscordUser, MobileMenuOpen, SelectDiscordList, USER_ID} from "../../jotai";
 import { useRouter } from 'next/router'
 import Link from "next/link";
+import {client} from "../../client";
+import id from "../../pages/dashboard/channel/[id]";
+import addId from "../../pages/dashboard/channel/add/[...addId]";
+import Pop_up_box from "../pop_up_box";
+import Loading from "../loading";
 const navigation = [
-    { name: 'Bot Config', href: 'home',current: true },
-    { name: 'TGRs', href: 'go',current: false },
+
+    { name: 'TGRs',href:'/config',current: false },
+    { name: 'Bot Config', href: '/',current: true },
 
 ]
 
@@ -15,29 +21,51 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
+
 const Left_header = () =>{
     const router = useRouter()
     const [mobileMenuOpen, setMobileMenuOpen] = useAtom(MobileMenuOpen)
     const [discordList,setDiscordList] =useAtom(DiscordList)
     const [loginOut,setLoginOut] =useState(false)
     const [pathname,setPathname] = useState("")
-    const [selectDiscord,setSelectDiscord] = useState(0)
+
+    const {id,addId}  =router.query
+
+    const [discordUser,setDiscordUser] =useAtom(DiscordUser)
+    const [user_id,setUser_id] = useAtom(USER_ID)
+    const OPTIONS = {id:"",username:"",avatar:""};
+    const [userInfo,setUserInfo] = useState(OPTIONS)
 
     const AddDiscordList = () =>{
-        setDiscordList([{name:"SuiRobot",img:"/user_logo.png",id:"1"},{name:"SuiRobot2",img:"/user_logo.png",id:"2"}])
-        Select("1",0)
+        window.open('https://discord.com/api/oauth2/authorize?client_id=1085234510649622548&permissions=268438548&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&response_type=code&scope=identify%20guilds%20applications.commands%20bot',"_parent")
+    }
+    const [selectDiscordList,setSelectDiscordList] =useAtom(SelectDiscordList)
+
+    const SelectDiscord = (id) =>{
+        router.push(`/dashboard/channel/${id}`)
+
     }
 
-    const Select = (id,index) =>{
-        setSelectDiscord(index)
+    useEffect(()=>{
+        if (router.isReady) {
 
-        router.push(`/dashboard/${id}`)
-    }
+            const query = async () =>{
+                setUserInfo(discordUser)
+            }
+            query()
 
+
+        }
+    },[router.isReady])
+
+    useEffect(() => {
+        router.prefetch(`/dashboard/channel/${id}/[addID]`);
+    }, [router.prefetch,id]);
 
 
     return(
         <>
+
             <div className="hidden w-80 overflow-y-auto md:block">
 
                 <div className="flex w-full  h-screen ">
@@ -48,11 +76,11 @@ const Left_header = () =>{
                             src="https://cc.collab.land/static/media/Logo-Mark-Color.cfa3e870.svg"
                             alt="Your Company"
                         />
-                        <div className={discordList[0].name ==""? "hidden":"mt-3 "}>
+                        <div className={discordList[0].name ==""? "hidden":"mt-3"}>
                             {discordList.map((item,index)=>(
                                 // border-l-2 border-amber-400
-                                    <button key={item.name} onClick={()=>{Select(item.id,index)}} className={" flex mb-3"}>
-                                    <img className="rounded-lg w-12 h-12 border border-gray-100 " src={item.img} alt=""/>
+                                    <button key={item.name} onClick={()=>{SelectDiscord(item.id)}} className={discordList[index].id== discordList[selectDiscordList].id?"border-l-2 border-amber-400":"flex mb-3"}>
+                                    <img className="rounded-lg w-12 h-12 border border-gray-100 " src={`https://cdn.discordapp.com/icons/${item.id}/${item.icon}.png`} alt=""/>
                                     </button>
                             ))}
                         </div>
@@ -69,15 +97,18 @@ const Left_header = () =>{
                         <div className="px-3 pt-3">
                         <div className={"text-white p-3 flex items-center"}>
                             {/*<img className="w-6 h-6 rounded-full mr-2" src="/discord 1.svg" alt=""/> */}
-                            {discordList[0].name == "" ? "---------" : `${discordList[selectDiscord].name}`}
+                            {discordList[0].id =="" ? "---------" : `${discordList[selectDiscordList].name}`}
                         </div>
                             <div className="grid grid-cols-1 gap-4 mt-4">
                                 <div className="text-xs  font-medium text-gray-200">
                                     Administration
                                 </div>
                         {navigation.map((item) => (
-                            <Link key={item.name} href={item.href} legacyBehavior>
+                            <Link key={item.name}
+                                  href={`/dashboard/channel/${item.href}/${discordList[selectDiscordList].id}`}
+                                  legacyBehavior>
                             <a
+
                                 className={classNames(
                                     item.current ? ' text-white' : 'text-white/20',
                                     'group flex w-full  items-center  text-sm  font-medium'
@@ -85,16 +116,15 @@ const Left_header = () =>{
                             >
                                 <span className="">{item.name}</span>
                             </a>
-                            </Link>
+                             </Link>
                         ))}
                             </div>
                     </div>
-
-                        <div className="bg-neutral-700  px-4 py-3   items-center flex justify-between">
+                        <div className={userInfo.username!==""?"bg-neutral-700  px-4 py-3   items-center flex justify-between":"hidden"}>
                             <div className="flex items-center">
-                                    <img className="rounded-full w-6 h-6" src="https://cdn.discordapp.com/avatars/876496252269903873/231c8fa0ab999ee0e6236760b8fa35d6.png" alt=""/>
+                                    <img className="rounded-full w-6 h-6" src={`https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}.png`} alt=""/>
                                     <div className="text-sm text-white font-semibold ml-2">
-                                        Green.
+                                        {userInfo.username}
                                     </div>
                             </div>
                             <div>
