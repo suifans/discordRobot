@@ -113,7 +113,7 @@ const  NextPage = () => {
                                SuiRobots
                            </div>
                            <div className="text-center rounded-b-lg  text-xs p-3">
-                               EVM 0x773B39ac9E47C5454cB488b8a4e590c3d07740d0
+                               Sui 0x773B39ac9E47C5454cB488b8a4e590c3d07740d0
                            </div>
                        </div>
 
