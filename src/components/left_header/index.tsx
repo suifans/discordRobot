@@ -52,6 +52,7 @@ const Left_header = () =>{
 
             const query = async () =>{
                 setUserInfo(discordUser)
+                console.log(userInfo)
             }
             query()
 
