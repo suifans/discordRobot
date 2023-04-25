@@ -85,7 +85,7 @@ const Channel = () =>{
                     });
                     const realRolesList = JSON.parse(rolesRes.res.guild_info).roles
 
-                    console.log(realRolesList)
+                    console.log('sadasdas',realRolesList)
 
                     if(realRolesList){
                         for (let z= 0 ;z<realRolesList.length;z++){
@@ -119,8 +119,6 @@ const Channel = () =>{
                     }else {
                         router.push("/dashboard")
                     }
-
-
 
                 }else {
                     router.push("/dashboard")

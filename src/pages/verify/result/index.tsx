@@ -1,11 +1,4 @@
-
-
-
-
 const  NextPage = () => {
-
-
-
     return (
         <div className="w-screen h-screen bg-black">
             <div className="p-10">

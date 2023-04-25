@@ -19,14 +19,14 @@ const  NextPage = () => {
     const [address,setAddress] = useState("")
     useEffect(()=>{
         if(router.isReady){
-            setOpenLoading(true)
+            // setOpenLoading(true)
             const query = async () => {
-                const guild_id = router.query.slug[0]
-                const user_id = router.query.slug[1]
-                const userInfoRet = await client.callApi('v1/User/GetDcUserInfo', {
-                    user_id
-                });
-                console.log(userInfoRet)
+                // const guild_id = router.query.slug[0]
+                // const user_id = router.query.slug[1]
+                // const userInfoRet = await client.callApi('v1/User/GetDcUserInfo', {
+                //     user_id
+                // });
+                // console.log(userInfoRet,guild_id)
                 // const userData = JSON.parse(userInfoRet.res.user_info)
                 // setUserDetail({
                 //     id:userData.id,
@@ -44,7 +44,7 @@ const  NextPage = () => {
                 //     icon:guildData.icon}
                 // )
                 // console.log(guildData)
-                setOpenLoading(false)
+                // setOpenLoading(false)
             }
             query()
         }
@@ -60,48 +60,49 @@ const  NextPage = () => {
 
 
     const verify =async () =>{
-        setOpenLoading(true)
-        const getAllRules = await client.callApi('v1/Rules/GetAllRules', {
-            guild_id: guildDetail.id
-        });
-
-       if(getAllRules.isSucc){
-           const rulesList = JSON.parse(getAllRules.res.rule_list)
-
-           console.log(rulesList)
-           let state = true
-           for(let i=0; i<rulesList.length;i++ ){
-               let amount = 0
-               for (let x = 0; x < nfts.length; x++) {
-                   if(rulesList[i].smart_contract_address == nfts[x].package){
-                       amount++
-                   }
-               }
-               if( amount >= rulesList[i].min_token_amount && amount <= rulesList[i].max_token_amount ){
-                   const rolesRes = await client.callApi('v1/Verify/VerifyUserSucc', {
-                       role_id: rulesList[i].role_id, user_id: userDetail.id, guild_id: guildDetail.id
-                   });
-                   state= rolesRes.isSucc
-                   console.log(rolesRes)
-               }else {
-                   console.log("not ")
-               }
-           }
-           if(state){
-               setOpenLoading(false)
-               // location.replace("/verify/result")
-
-           }else {
-               setOpenLoading(false)
-               setVerifyState({state:false,type:"Verify",hash: ""})
-               setSop_up_boxState(true)
-
-           }
-       }else {
-           setOpenLoading(false)
-           setVerifyState({state:false,type:"NetWork",hash: ""})
-           setSop_up_boxState(true)
-       }
+        console.log(nfts)
+       //  setOpenLoading(true)
+       //  const getAllRules = await client.callApi('v1/Rules/GetAllRules', {
+       //      guild_id: guildDetail.id
+       //  });
+       //
+       // if(getAllRules.isSucc){
+       //     const rulesList = JSON.parse(getAllRules.res.rule_list)
+       //
+       //     console.log(rulesList)
+       //     let state = true
+       //     for(let i=0; i<rulesList.length;i++ ){
+       //         let amount = 0
+       //         for (let x = 0; x < nfts.length; x++) {
+       //             if(rulesList[i].smart_contract_address == nfts[x].package){
+       //                 amount++
+       //             }
+       //         }
+       //         if( amount >= rulesList[i].min_token_amount && amount <= rulesList[i].max_token_amount ){
+       //             const rolesRes = await client.callApi('v1/Verify/VerifyUserSucc', {
+       //                 role_id: rulesList[i].role_id, user_id: userDetail.id, guild_id: guildDetail.id
+       //             });
+       //             state= rolesRes.isSucc
+       //             console.log(rolesRes)
+       //         }else {
+       //             console.log("not ")
+       //         }
+       //     }
+       //     if(state){
+       //         setOpenLoading(false)
+       //         // location.replace("/verify/result")
+       //
+       //     }else {
+       //         setOpenLoading(false)
+       //         setVerifyState({state:false,type:"Verify",hash: ""})
+       //         setSop_up_boxState(true)
+       //
+       //     }
+       // }else {
+       //     setOpenLoading(false)
+       //     setVerifyState({state:false,type:"NetWork",hash: ""})
+       //     setSop_up_boxState(true)
+       // }
 
 
     }
@@ -122,7 +123,7 @@ const  NextPage = () => {
 
                </div>
            </div>
-               <div className="mx-auto w-4/12 bg-white rounded-lg flex flex-col   mt-10 p-8">
+               <div className="mx-auto max-w-2xl bg-white rounded-lg flex flex-col   mt-10 p-8">
                    <div className="mx-auto text-center">
                    <div className="text-3xl font-semibold ">
                        Verify with Existing Wallets

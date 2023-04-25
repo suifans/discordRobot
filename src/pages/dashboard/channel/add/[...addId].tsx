@@ -89,40 +89,44 @@ const Add = (props) =>{
         }
     },[router.isReady])
 
-    const Save = async () => {
-        setOpenLoading(true)
+    // const Save = async () => {
+    //     setOpenLoading(true)
+    //
+    //     const description = (document.getElementById("description") as HTMLInputElement).value
+    //     const smart_contract_address = (document.getElementById("address") as HTMLInputElement).value
+    //     const min_token_amount = (document.getElementById("min") as HTMLInputElement).value
+    //     const max_token_amount = (document.getElementById("max") as HTMLInputElement).value
+    //
+    //     console.log(typeof description,smart_contract_address,min_token_amount,max_token_amount)
+    //
+    //     const userInfoRet = await client.callApi('v1/Rules/AddRule', {
+    //         guild_id,
+    //         role_id,
+    //         description,
+    //         chain_type: "sui",
+    //         token_type: "nft",
+    //         smart_contract_address,
+    //         max_token_amount,
+    //         min_token_amount,
+    //
+    //     });
+    //     console.log(userInfoRet)
+    //     if(userInfoRet.isSucc){
+    //
+    //         setOpenLoading(false)
+    //         setVerifyState({state:true,type:"Add",hash: ""})
+    //         setSop_up_boxState(true)
+    //
+    //         router.back()
+    //     }else {
+    //         setOpenLoading(false)
+    //         setVerifyState({state:false,type:"Add",hash: ""})
+    //         setSop_up_boxState(true)
+    //     }
+    //
+    // }
 
-        const description = (document.getElementById("description") as HTMLInputElement).value
-        const smart_contract_address = (document.getElementById("address") as HTMLInputElement).value
-        const min_token_amount = (document.getElementById("min") as HTMLInputElement).value
-        const max_token_amount = (document.getElementById("max") as HTMLInputElement).value
-
-        console.log(typeof description,smart_contract_address,min_token_amount,max_token_amount)
-
-        const userInfoRet = await client.callApi('v1/Rules/AddRule', {
-            guild_id,
-            role_id,
-            description,
-            chain_type: "sui",
-            token_type: "nft",
-            smart_contract_address,
-            max_token_amount,
-            min_token_amount,
-
-        });
-        console.log(userInfoRet)
-        if(userInfoRet.isSucc){
-
-            setOpenLoading(false)
-            setVerifyState({state:true,type:"Add",hash: ""})
-            setSop_up_boxState(true)
-
-            router.back()
-        }else {
-            setOpenLoading(false)
-            setVerifyState({state:false,type:"Add",hash: ""})
-            setSop_up_boxState(true)
-        }
+    const Save = async () =>{
 
     }
     return (
@@ -171,32 +175,63 @@ const Add = (props) =>{
                                     </div>
                                 </div>
 
-                                <div className="mt-4 w-80 xl:w-100">
-                                    <label htmlFor="Token" className="flex justify-between text-sm font-medium text-gray-300">
-                                        Token Type
-                                    </label>
-                                    <div className="mt-2 text-white py-3 font-semibold text-xl">
-                                        NFT
-                                    </div>
-                                </div>
+                                {/*<div className="mt-4 w-80 xl:w-100">*/}
+                                {/*    <label htmlFor="Token" className="flex justify-between text-sm font-medium text-gray-300">*/}
+                                {/*        Token Type*/}
+                                {/*    </label>*/}
+                                {/*    <div className="mt-2 text-white py-3 font-semibold text-xl">*/}
+                                {/*        NFT*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
 
-                                <div className="mt-4 w-80 xl:w-100">
-                                    <label htmlFor="Address" className="flex justify-between text-sm font-medium text-gray-300">
-                                        Address
-                                    </label>
-                                    <div className="mt-2 ">
-                                        <input
-                                            id="address"
-                                            required
-                                            autoComplete="off"
-                                            placeholder="Input address"
-                                            className="outline-none  w-full p-3 border  rounded-lg shadow-sm placeholder-gray-400  sm:text-sm"
-                                        />
-                                    </div>
-                                </div>
+                                {/*<div className="mt-4 w-80 xl:w-100">*/}
+                                {/*    <label htmlFor="Address" className="flex justify-between text-sm font-medium text-gray-300">*/}
+                                {/*        Address*/}
+                                {/*    </label>*/}
+                                {/*    <div className="mt-2 ">*/}
+                                {/*        <input*/}
+                                {/*            id="address"*/}
+                                {/*            required*/}
+                                {/*            autoComplete="off"*/}
+                                {/*            placeholder="Input address"*/}
+                                {/*            className="outline-none  w-full p-3 border  rounded-lg shadow-sm placeholder-gray-400  sm:text-sm"*/}
+                                {/*        />*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
 
-                                <div className="mt-4 w-80 xl:w-100 flex justify-between items-center">
-                                    <div className="w-1/2">
+                                {/*<div className="mt-4 w-80 xl:w-100 flex justify-between items-center">*/}
+                                {/*    <div className="w-1/2">*/}
+                                {/*    <label htmlFor="Min" className="flex justify-between text-sm font-medium text-gray-300">*/}
+                                {/*        Min Amount*/}
+                                {/*    </label>*/}
+                                {/*    <div className="mt-2 ">*/}
+                                {/*        <input*/}
+                                {/*            id="min"*/}
+                                {/*            required*/}
+                                {/*            autoComplete="off"*/}
+                                {/*            placeholder="Enter min amount of token"*/}
+                                {/*            className="outline-none  w-full p-3 border  rounded-lg shadow-sm placeholder-gray-400  sm:text-sm"*/}
+                                {/*        />*/}
+                                {/*    </div>*/}
+                                {/*    </div>*/}
+                                {/*    <div className="w-1/2 ml-4">*/}
+                                {/*        <label htmlFor="Max" className="flex justify-between text-sm font-medium text-gray-300">*/}
+                                {/*            Max Amount of tokens (optional)*/}
+                                {/*        </label>*/}
+                                {/*        <div className="mt-2 ">*/}
+                                {/*            <input*/}
+                                {/*                id="max"*/}
+                                {/*                required*/}
+                                {/*                autoComplete="off"*/}
+                                {/*                placeholder="Enter max amount of token"*/}
+                                {/*                className="outline-none  w-full p-3 border  rounded-lg shadow-sm placeholder-gray-400  sm:text-sm"*/}
+                                {/*            />*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+
+                                {/*</div>*/}
+
+                                <div className="w-56">
                                     <label htmlFor="Min" className="flex justify-between text-sm font-medium text-gray-300">
                                         Min Amount
                                     </label>
@@ -209,22 +244,6 @@ const Add = (props) =>{
                                             className="outline-none  w-full p-3 border  rounded-lg shadow-sm placeholder-gray-400  sm:text-sm"
                                         />
                                     </div>
-                                    </div>
-                                    <div className="w-1/2 ml-4">
-                                        <label htmlFor="Max" className="flex justify-between text-sm font-medium text-gray-300">
-                                            Max Amount of tokens (optional)
-                                        </label>
-                                        <div className="mt-2 ">
-                                            <input
-                                                id="max"
-                                                required
-                                                autoComplete="off"
-                                                placeholder="Enter max amount of token"
-                                                className="outline-none  w-full p-3 border  rounded-lg shadow-sm placeholder-gray-400  sm:text-sm"
-                                            />
-                                        </div>
-                                    </div>
-
                                 </div>
                                 <button onClick={Save} className="bg-yellow-400 text-black px-8 mt-10 w-48 justify-center   py-2.5 rounded-lg text-sm flex items-center" >
                                   Save

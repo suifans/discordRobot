@@ -32,7 +32,7 @@ const DashBoard = () =>{
     const [discordUser,setDiscordUser] =useAtom(DiscordUser)
     const [user_id,setUser_id] = useAtom(USER_ID)
     const AddDiscordList = () =>{
-        window.open('https://discord.com/api/oauth2/authorize?client_id=1085234510649622548&permissions=268438564&redirect_uri=https%3A%2F%2Fdiscord.suirobots.com%2Fdashboard&response_type=code&scope=identify%20guilds%20bot%20applications.commands',"_parent")
+        window.open('https://discord.com/login?redirect_to=%2Foauth2%2Fauthorize%3Fclient_id%3D1085234510649622548%26permissions%3D268445716%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26response_type%3Dcode%26scope%3Didentify%2520guilds%2520bot%2520applications.commands',"_parent")
         // window.open('https://discord.com/api/oauth2/authorize?client_id=1085234510649622548&permissions=268438548&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&response_type=code&scope=identify%20guilds%20applications.commands%20bot',"_parent")
 
     }
