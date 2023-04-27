@@ -5,8 +5,10 @@ import { ReqDelRule, ResDelRule } from './v1/Rules/PtlDelRule';
 import { ReqGetAllRules, ResGetAllRules } from './v1/Rules/PtlGetAllRules';
 import { ReqAddDcUserTestRules, ResAddDcUserTestRules } from './v1/Test/PtlAddDcUserTestRules';
 import { ReqAddDcUserTestRulesNumber, ResAddDcUserTestRulesNumber } from './v1/Test/PtlAddDcUserTestRulesNumber';
+import { ReqDelDcUserTestRulesNumber, ResDelDcUserTestRulesNumber } from './v1/Test/PtlDelDcUserTestRulesNumber';
 import { ReqGetDcUserTestRules, ResGetDcUserTestRules } from './v1/Test/PtlGetDcUserTestRules';
 import { ReqGetDcUserTestRulesNumber, ResGetDcUserTestRulesNumber } from './v1/Test/PtlGetDcUserTestRulesNumber';
+import { ReqGetDcNavUserToken, ResGetDcNavUserToken } from './v1/User/PtlGetDcNavUserToken';
 import { ReqGetDcUserAllGuilds, ResGetDcUserAllGuilds } from './v1/User/PtlGetDcUserAllGuilds';
 import { ReqGetDcUserGuildInfo, ResGetDcUserGuildInfo } from './v1/User/PtlGetDcUserGuildInfo';
 import { ReqGetDcUserInfo, ResGetDcUserInfo } from './v1/User/PtlGetDcUserInfo';
@@ -39,6 +41,10 @@ export interface ServiceType {
             req: ReqAddDcUserTestRulesNumber,
             res: ResAddDcUserTestRulesNumber
         },
+        "v1/Test/DelDcUserTestRulesNumber": {
+            req: ReqDelDcUserTestRulesNumber,
+            res: ResDelDcUserTestRulesNumber
+        },
         "v1/Test/GetDcUserTestRules": {
             req: ReqGetDcUserTestRules,
             res: ResGetDcUserTestRules
@@ -46,6 +52,10 @@ export interface ServiceType {
         "v1/Test/GetDcUserTestRulesNumber": {
             req: ReqGetDcUserTestRulesNumber,
             res: ResGetDcUserTestRulesNumber
+        },
+        "v1/User/GetDcNavUserToken": {
+            req: ReqGetDcNavUserToken,
+            res: ResGetDcNavUserToken
         },
         "v1/User/GetDcUserAllGuilds": {
             req: ReqGetDcUserAllGuilds,
@@ -74,7 +84,7 @@ export interface ServiceType {
 }
 
 export const serviceProto: ServiceProto<ServiceType> = {
-    "version": 10,
+    "version": 12,
     "services": [
         {
             "id": 12,
@@ -107,6 +117,11 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "api"
         },
         {
+            "id": 17,
+            "name": "v1/Test/DelDcUserTestRulesNumber",
+            "type": "api"
+        },
+        {
             "id": 15,
             "name": "v1/Test/GetDcUserTestRules",
             "type": "api"
@@ -114,6 +129,11 @@ export const serviceProto: ServiceProto<ServiceType> = {
         {
             "id": 16,
             "name": "v1/Test/GetDcUserTestRulesNumber",
+            "type": "api"
+        },
+        {
+            "id": 18,
+            "name": "v1/User/GetDcNavUserToken",
             "type": "api"
         },
         {
@@ -313,13 +333,6 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 1,
-                    "name": "role_id",
-                    "type": {
-                        "type": "String"
-                    }
-                },
-                {
                     "id": 2,
                     "name": "user_id",
                     "type": {
@@ -392,7 +405,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                 }
             ]
         },
-        "v1/Test/PtlGetDcUserTestRules/ReqGetDcUserTestRules": {
+        "v1/Test/PtlDelDcUserTestRulesNumber/ReqDelDcUserTestRulesNumber": {
             "type": "Interface",
             "properties": [
                 {
@@ -405,6 +418,30 @@ export const serviceProto: ServiceProto<ServiceType> = {
                 {
                     "id": 1,
                     "name": "role_id",
+                    "type": {
+                        "type": "String"
+                    }
+                }
+            ]
+        },
+        "v1/Test/PtlDelDcUserTestRulesNumber/ResDelDcUserTestRulesNumber": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "time",
+                    "type": {
+                        "type": "Date"
+                    }
+                }
+            ]
+        },
+        "v1/Test/PtlGetDcUserTestRules/ReqGetDcUserTestRules": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "guild_id",
                     "type": {
                         "type": "String"
                     }
@@ -457,6 +494,37 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "name": "rules",
                     "type": {
                         "type": "String"
+                    }
+                }
+            ]
+        },
+        "v1/User/PtlGetDcNavUserToken/ReqGetDcNavUserToken": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "code",
+                    "type": {
+                        "type": "String"
+                    }
+                }
+            ]
+        },
+        "v1/User/PtlGetDcNavUserToken/ResGetDcNavUserToken": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "user_id",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "time",
+                    "type": {
+                        "type": "Date"
                     }
                 }
             ]

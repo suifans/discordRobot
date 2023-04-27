@@ -8,7 +8,6 @@
 export interface ReqGetDcUserTestRules {
     /** 要增加的消息内容 */
     guild_id:string
-    role_id:string
     user_id:string
 }
 

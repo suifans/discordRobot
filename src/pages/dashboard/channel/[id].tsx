@@ -490,7 +490,7 @@ const Channel = () =>{
 
     const RemoveRole = async (role_id) => {
         setOpenLoading(true)
-        const res = await client.callApi('v1/Rules/DelRule', {
+        const res = await client.callApi('v1/Test/DelDcUserTestRulesNumber', {
             role_id,
             guild_id: `${router.query.id}`
         });
