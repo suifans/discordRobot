@@ -64,15 +64,14 @@ const Add = (props) =>{
                             setRole(discordGuildRoleList[index])
                         }
 
+
                         console.log(discordRoleInfo)
                         const whetherSetUpIndex =discordRoleInfo.findIndex(target =>target.role_id == role_id)
                         if(whetherSetUpIndex !==-1){
                             const data = discordRoleInfo[whetherSetUpIndex];
-                            if(document.getElementById("max")!==null){
+                            if(document.getElementById("description")!==null){
                                 (document.getElementById("description") as HTMLInputElement).value = data.description;
-                                (document.getElementById("address") as HTMLInputElement).value = data.smart_contract_address;
-                                (document.getElementById("min") as HTMLInputElement).value = data.min_token_amount;
-                                (document.getElementById("max") as HTMLInputElement).value = data.max_token_amount;
+                                (document.getElementById("min") as HTMLInputElement).value = data.number;
                             }
 
                         }
@@ -92,22 +91,22 @@ const Add = (props) =>{
     // const Save = async () => {
     //     setOpenLoading(true)
     //
-    //     const description = (document.getElementById("description") as HTMLInputElement).value
-    //     const smart_contract_address = (document.getElementById("address") as HTMLInputElement).value
-    //     const min_token_amount = (document.getElementById("min") as HTMLInputElement).value
-    //     const max_token_amount = (document.getElementById("max") as HTMLInputElement).value
+    //     // const description = (document.getElementById("description") as HTMLInputElement).value
+    //     // const smart_contract_address = (document.getElementById("address") as HTMLInputElement).value
+    //     // const min_token_amount = (document.getElementById("min") as HTMLInputElement).value
+    //     // const max_token_amount = (document.getElementById("max") as HTMLInputElement).value
     //
-    //     console.log(typeof description,smart_contract_address,min_token_amount,max_token_amount)
+    //     // console.log(typeof description,smart_contract_address,min_token_amount,max_token_amount)
     //
     //     const userInfoRet = await client.callApi('v1/Rules/AddRule', {
     //         guild_id,
     //         role_id,
-    //         description,
+    //         description:"asdasd",
     //         chain_type: "sui",
     //         token_type: "nft",
-    //         smart_contract_address,
-    //         max_token_amount,
-    //         min_token_amount,
+    //         smart_contract_address:"asdasda",
+    //         max_token_amount:"asdasd",
+    //         min_token_amount:"asdasd",
     //
     //     });
     //     console.log(userInfoRet)
@@ -127,7 +126,30 @@ const Add = (props) =>{
     // }
 
     const Save = async () =>{
+        setOpenLoading(true)
+        const description = (document.getElementById("description") as HTMLInputElement).value
+        const number = (document.getElementById("min") as HTMLInputElement).value
 
+        const userInfoRet = await client.callApi('v1/Test/AddDcUserTestRulesNumber', {
+            chain_type: "Sui",
+            description,
+            guild_id,
+            number,
+            role_id
+        });
+        console.log(userInfoRet)
+        if(userInfoRet.isSucc){
+
+            setOpenLoading(false)
+            setVerifyState({state:true,type:"Add",hash: ""})
+            setSop_up_boxState(true)
+
+            router.back()
+        }else {
+            setOpenLoading(false)
+            setVerifyState({state:false,type:"Add",hash: ""})
+            setSop_up_boxState(true)
+        }
     }
     return (
         <div className="">
@@ -228,9 +250,7 @@ const Add = (props) =>{
                                 {/*            />*/}
                                 {/*        </div>*/}
                                 {/*    </div>*/}
-
                                 {/*</div>*/}
-
                                 <div className="w-56">
                                     <label htmlFor="Min" className="flex justify-between text-sm font-medium text-gray-300">
                                         Min Amount

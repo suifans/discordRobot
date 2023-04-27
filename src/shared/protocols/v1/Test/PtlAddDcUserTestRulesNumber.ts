@@ -5,13 +5,16 @@
  * 增加数据
  * 此处的注释将会自动附带到生成的 API 文档中
  */
-export interface ReqGetDcUserGuilds {
+export interface ReqAddDcUserTestRulesNumber {
     /** 要增加的消息内容 */
-    code:string
+    guild_id:string
+    role_id:string
+    description: string;
+    chain_type: string;
+    number:string
 }
 
-export interface ResGetDcUserGuilds {
+export interface ResAddDcUserTestRulesNumber {
     /** 服务端内容创建时间 */
-    guild_infos:string
     time: Date
 }

@@ -33,7 +33,7 @@ const Left_header = () =>{
 
     const [discordUser,setDiscordUser] =useAtom(DiscordUser)
     const [user_id,setUser_id] = useAtom(USER_ID)
-    const OPTIONS = {id:"",username:"",avatar:""};
+    const OPTIONS = {id:"",username:"", avatar:""};
     const [userInfo,setUserInfo] = useState(OPTIONS)
 
     const AddDiscordList = () =>{
