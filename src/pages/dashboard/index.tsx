@@ -44,6 +44,7 @@ const DashBoard = () =>{
         if (router.isReady) {
             setOpenLoading(true)
             let code = router.query.code
+            console.log(code)
                 const query = async () =>{
                     const ret = await client.callApi('v1/User/GetDcUserToken', {
                         code:`${code}`
