@@ -43,34 +43,34 @@ const DashBoard = () =>{
         if (router.isReady) {
             setOpenLoading(true)
             let code = router.query.code
-                const query = async () =>{
-                    const ret = await client.callApi('v1/User/GetDcUserToken', {
-                        code:`${code}`
-                    });
-                    console.log(code,"我是code码")
-                    console.log('我是user_id',ret.res.user_id)
-                    if(ret.isSucc){
-                       const user_id = ret.res.user_id
-                        setUser_id(user_id)
-                        const userInfoRet = await client.callApi('v1/User/GetDcUserInfo', {
-                            user_id
-                        });
-                        const data = JSON.parse(userInfoRet.res.user_info)
-                        setDiscordUser({id:data.id,username:data.username,avatar:data.avatar})
-
-                        const allGuildRet = await GetDcUserAllGuilds(user_id)
-                        if(allGuildRet.length>0){
-                            setOpenLoading(false)
-                            setDiscordList(allGuildRet)
-                           await router.push(`/dashboard/channel/${allGuildRet[0].id}`)
-                        }else {
-                            setOpenLoading(false)
-                            await router.push("/dashboard")
-                        }
-                    }
-
-                }
-                query()
+                // const query = async () =>{
+                {/*    const ret = await client.callApi('v1/User/GetDcUserToken', {*/}
+                //         code:`${code}`
+                //     });
+                //     console.log(code,"我是code码")
+                //     console.log('我是user_id',ret.res.user_id)
+                //     if(ret.isSucc){
+                //        const user_id = ret.res.user_id
+                //         setUser_id(user_id)
+                //         const userInfoRet = await client.callApi('v1/User/GetDcUserInfo', {
+                //             user_id
+                //         });
+                //         const data = JSON.parse(userInfoRet.res.user_info)
+                //         setDiscordUser({id:data.id,username:data.username,avatar:data.avatar})
+                //
+                //         const allGuildRet = await GetDcUserAllGuilds(user_id)
+                //         if(allGuildRet.length>0){
+                //             setOpenLoading(false)
+                //             setDiscordList(allGuildRet)
+                //            await router.push(`/dashboard/channel/${allGuildRet[0].id}`)
+                //         }else {
+                //             setOpenLoading(false)
+                //             await router.push("/dashboard")
+                //         }
+                //     }
+                //
+                // }
+                // query()
         }
     },[router.isReady])
 
