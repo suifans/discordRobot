@@ -16,7 +16,7 @@
   "dependencies": {
     "@mysten/sui.js": "^0.30.0",
     "clsx": "^1.2.1",
-    "ethos-connect": "^0.0.119",
+    "ethos-connect": "^0.0.154",
     "framer-motion": "^10.0.0",
     "jotai": "^1.10.0",
     "koa": "^2.14.1",

@@ -60,6 +60,7 @@ const  NextPage = () => {
 
 
     const verify =async () =>{
+        console.log(wallet?.contents?.nfts)
         console.log(nfts)
         setOpenLoading(true)
         const getAllRules = await client.callApi('v1/Rules/GetAllRules', {
@@ -74,6 +75,7 @@ const  NextPage = () => {
            for(let i=0; i<rulesList.length;i++ ){
                let amount = 0
                for (let x = 0; x < nfts.length; x++) {
+                   // @ts-ignore
                    if(rulesList[i].smart_contract_address == nfts[x].package){
                        amount++
                    }
