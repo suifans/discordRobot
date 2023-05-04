@@ -36,7 +36,6 @@ const DashBoard = () =>{
         // window.open('https://discord.com/api/oauth2/authorize?client_id=1085234510649622548&permissions=268438548&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&response_type=code&scope=identify%20guilds%20applications.commands%20bot',"_parent")
 
     }
-
     const [,setSop_up_boxState] = useAtom(VerifyPop_up_boxState)
     const [,setVerifyState] =useAtom(VerifyState)
     const [,setOpenLoading] =useAtom(LoadingState)
