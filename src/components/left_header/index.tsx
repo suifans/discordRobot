@@ -32,7 +32,7 @@ const Left_header = () =>{
     const {id,addId}  =router.query
 
     const [discordUser,setDiscordUser] =useAtom(DiscordUser)
-    const [user_id,setUser_id] = useAtom(USER_ID)
+
     const OPTIONS = {id:"",username:"", avatar:""};
     const [userInfo,setUserInfo] = useState(OPTIONS)
 
