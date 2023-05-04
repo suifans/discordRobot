@@ -424,7 +424,7 @@ const Channel = () =>{
                     const rolesRes = await client.callApi('v1/User/GetDcUserGuildInfo', {
                         guild_id: `${guild_id}`,
                     });
-
+                    console.log(rolesRes.res)
                     const realRolesList = JSON.parse(rolesRes.res.guild_info).roles
 
                     if(realRolesList){

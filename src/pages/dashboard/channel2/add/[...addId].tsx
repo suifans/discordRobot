@@ -71,7 +71,9 @@ const Add = (props) =>{
                             const data = discordRoleInfo[whetherSetUpIndex];
                             if(document.getElementById("description")!==null){
                                 (document.getElementById("description") as HTMLInputElement).value = data.description;
-                                (document.getElementById("min") as HTMLInputElement).value = data.number;
+                                (document.getElementById("address") as HTMLInputElement).value = data.smart_contract_address;
+                                (document.getElementById("min") as HTMLInputElement).value = data.min_token_amount;
+                                (document.getElementById("max") as HTMLInputElement).value = data.max_token_amount;
                             }
 
                         }
@@ -91,22 +93,22 @@ const Add = (props) =>{
     const Save = async () => {
         setOpenLoading(true)
 
-        // const description = (document.getElementById("description") as HTMLInputElement).value
-        // const smart_contract_address = (document.getElementById("address") as HTMLInputElement).value
-        // const min_token_amount = (document.getElementById("min") as HTMLInputElement).value
-        // const max_token_amount = (document.getElementById("max") as HTMLInputElement).value
+        const description = (document.getElementById("description") as HTMLInputElement).value
+        const smart_contract_address = (document.getElementById("address") as HTMLInputElement).value
+        const min_token_amount = (document.getElementById("min") as HTMLInputElement).value
+        const max_token_amount = (document.getElementById("max") as HTMLInputElement).value
 
         // console.log(typeof description,smart_contract_address,min_token_amount,max_token_amount)
 
         const userInfoRet = await client.callApi('v1/Rules/AddRule', {
             guild_id,
             role_id,
-            description:"asdasd",
+            description,
             chain_type: "sui",
             token_type: "nft",
-            smart_contract_address:"asdasda",
-            max_token_amount:"asdasd",
-            min_token_amount:"asdasd",
+            smart_contract_address,
+            max_token_amount,
+            min_token_amount,
 
         });
         console.log(userInfoRet)

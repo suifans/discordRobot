@@ -61,48 +61,48 @@ const  NextPage = () => {
 
     const verify =async () =>{
         console.log(nfts)
-       //  setOpenLoading(true)
-       //  const getAllRules = await client.callApi('v1/Rules/GetAllRules', {
-       //      guild_id: guildDetail.id
-       //  });
-       //
-       // if(getAllRules.isSucc){
-       //     const rulesList = JSON.parse(getAllRules.res.rule_list)
-       //
-       //     console.log(rulesList)
-       //     let state = true
-       //     for(let i=0; i<rulesList.length;i++ ){
-       //         let amount = 0
-       //         for (let x = 0; x < nfts.length; x++) {
-       //             if(rulesList[i].smart_contract_address == nfts[x].package){
-       //                 amount++
-       //             }
-       //         }
-       //         if( amount >= rulesList[i].min_token_amount && amount <= rulesList[i].max_token_amount ){
-       //             const rolesRes = await client.callApi('v1/Verify/VerifyUserSucc', {
-       //                 role_id: rulesList[i].role_id, user_id: userDetail.id, guild_id: guildDetail.id
-       //             });
-       //             state= rolesRes.isSucc
-       //             console.log(rolesRes)
-       //         }else {
-       //             console.log("not ")
-       //         }
-       //     }
-       //     if(state){
-       //         setOpenLoading(false)
-       //         // location.replace("/verify/result")
-       //
-       //     }else {
-       //         setOpenLoading(false)
-       //         setVerifyState({state:false,type:"Verify",hash: ""})
-       //         setSop_up_boxState(true)
-       //
-       //     }
-       // }else {
-       //     setOpenLoading(false)
-       //     setVerifyState({state:false,type:"NetWork",hash: ""})
-       //     setSop_up_boxState(true)
-       // }
+        setOpenLoading(true)
+        const getAllRules = await client.callApi('v1/Rules/GetAllRules', {
+            guild_id: guildDetail.id
+        });
+
+       if(getAllRules.isSucc){
+           const rulesList = JSON.parse(getAllRules.res.rule_list)
+
+           console.log(rulesList)
+           let state = true
+           for(let i=0; i<rulesList.length;i++ ){
+               let amount = 0
+               for (let x = 0; x < nfts.length; x++) {
+                   if(rulesList[i].smart_contract_address == nfts[x].package){
+                       amount++
+                   }
+               }
+               if( amount >= rulesList[i].min_token_amount && amount <= rulesList[i].max_token_amount ){
+                   const rolesRes = await client.callApi('v1/Verify/VerifyUserSucc', {
+                       role_id: rulesList[i].role_id, user_id: userDetail.id, guild_id: guildDetail.id
+                   });
+                   state= rolesRes.isSucc
+                   console.log(rolesRes)
+               }else {
+                   console.log("not ")
+               }
+           }
+           if(state){
+               setOpenLoading(false)
+               // location.replace("/verify/result")
+
+           }else {
+               setOpenLoading(false)
+               setVerifyState({state:false,type:"Verify",hash: ""})
+               setSop_up_boxState(true)
+
+           }
+       }else {
+           setOpenLoading(false)
+           setVerifyState({state:false,type:"NetWork",hash: ""})
+           setSop_up_boxState(true)
+       }
 
 
     }

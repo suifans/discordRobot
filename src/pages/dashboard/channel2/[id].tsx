@@ -73,7 +73,7 @@ const Channel = () =>{
                     const getAllRules = await client.callApi('v1/Rules/GetAllRules', {
                         guild_id: `${guild_id}`
                     });
-                    console.log("Test",JSON.parse(getAllRules.res.rule_list))
+
                     const rulesList =getAllRules.res ? JSON.parse(getAllRules.res.rule_list) : []
                     //
                     setDiscordRoleInfo(rulesList)
@@ -136,7 +136,7 @@ const Channel = () =>{
     }
     const Apply = (activeOption) =>{
         if(activeOption!==""){
-            router.push(`/dashboard/channel/add/${discordList[selectDiscordList].id}/${activeOption}`)
+            router.push(`/dashboard/channel2/add/${discordList[selectDiscordList].id}/${activeOption}`)
         }
 
     }
@@ -268,7 +268,6 @@ const Channel = () =>{
                             </div>
                         </Dialog>
                     </Transition.Root>
-
                     <Transition.Root show={openSelectRemoveRole} as={Fragment}>
                         <Dialog as="div" className="fixed z-40 inset-0 overflow-y-auto " onClose={()=>false}>
                             <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center shadow-2xl   sm:block sm:p-0">

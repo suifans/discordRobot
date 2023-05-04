@@ -1,9 +1,6 @@
 import {useRouter} from "next/router";
 const Login = () =>{
-
     const router = useRouter()
-
-
     const login = () =>{
         window.open('https://discord.com/oauth2/authorize?client_id=1085234510649622548&redirect_uri=https%3A%2F%2Fdiscord.suirobots.com%2Fdashboard&response_type=code&scope=guilds%20identify',"_parent")
         // window.open('https://discord.com/api/oauth2/authorize?client_id=1085234510649622548&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&response_type=code&scope=identify%20guilds',"_parent")
