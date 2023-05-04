@@ -77,10 +77,8 @@ const  NextPage = () => {
                // check your nft balance
                for (let x = 0; x < nfts.length; x++) {
                    console.log('rulesList[i].smart_contract_address',rulesList[i].smart_contract_address)
-                   // @ts-ignore
-                   console.log('nfts[x].package',nfts[x].package)
-                   // @ts-ignore
-                   if(rulesList[i].smart_contract_address == nfts[x].package){
+                   console.log('nfts[x].package',nfts[x].packageObjectId)
+                   if(rulesList[i].smart_contract_address == nfts[x].packageObjectId){
                        amount++
                    }
                }
