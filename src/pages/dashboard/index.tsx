@@ -30,7 +30,7 @@ const DashBoard = () =>{
     const router = useRouter()
     const [discordList,setDiscordList] =useAtom(DiscordList)
     const [discordUser,setDiscordUser] =useAtom(DiscordUser)
-    const [user_id,setUser_id] = useAtom(USER_ID)
+    const [userId,setUser_id] = useAtom(USER_ID)
     const AddDiscordList = () =>{
         window.open('https://discord.com/oauth2/authorize?client_id=1085234510649622548&permissions=268445744&redirect_uri=https%3A%2F%2Fdiscord.suirobots.com%2Fdashboard&response_type=code&scope=guilds%20identify%20applications.commands%20bot',"_parent")
         // window.open('https://discord.com/api/oauth2/authorize?client_id=1085234510649622548&permissions=268438548&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&response_type=code&scope=identify%20guilds%20applications.commands%20bot',"_parent")
