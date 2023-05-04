@@ -95,8 +95,7 @@ const  NextPage = () => {
            }
            if(state){
                setOpenLoading(false)
-               // location.replace("/verify/result")
-
+               await router.push("/verify/result")
            }else {
                setOpenLoading(false)
                setVerifyState({state:false,type:"Verify",hash: ""})
