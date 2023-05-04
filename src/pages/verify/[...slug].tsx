@@ -19,32 +19,32 @@ const  NextPage = () => {
     const [address,setAddress] = useState("")
     useEffect(()=>{
         if(router.isReady){
-            // setOpenLoading(true)
+            setOpenLoading(true)
             const query = async () => {
-                // const guild_id = router.query.slug[0]
-                // const user_id = router.query.slug[1]
-                // const userInfoRet = await client.callApi('v1/User/GetDcUserInfo', {
-                //     user_id
-                // });
-                // console.log(userInfoRet,guild_id)
-                // const userData = JSON.parse(userInfoRet.res.user_info)
-                // setUserDetail({
-                //     id:userData.id,
-                //     userName:userData.username+userData.discriminator,
-                //     avatar:userData.avatar}
-                // )
-                // console.log(userData)
-                // const rolesRes = await client.callApi('v1/User/GetDcUserGuildInfo', {
-                //     guild_id
-                // });
-                // const guildData = JSON.parse(rolesRes.res.guild_info)
-                // setGuildDetail({
-                //     id:guildData.id,
-                //     guildName:guildData.name,
-                //     icon:guildData.icon}
-                // )
-                // console.log(guildData)
-                // setOpenLoading(false)
+                const guild_id = router.query.slug[0]
+                const user_id = router.query.slug[1]
+                const userInfoRet = await client.callApi('v1/User/GetDcUserInfo', {
+                    user_id
+                });
+                console.log(userInfoRet,guild_id)
+                const userData = JSON.parse(userInfoRet.res.user_info)
+                setUserDetail({
+                    id:userData.id,
+                    userName:userData.username+userData.discriminator,
+                    avatar:userData.avatar}
+                )
+                console.log(userData)
+                const rolesRes = await client.callApi('v1/User/GetDcUserGuildInfo', {
+                    guild_id
+                });
+                const guildData = JSON.parse(rolesRes.res.guild_info)
+                setGuildDetail({
+                    id:guildData.id,
+                    guildName:guildData.name,
+                    icon:guildData.icon}
+                )
+                console.log(guildData)
+                setOpenLoading(false)
             }
             query()
         }
