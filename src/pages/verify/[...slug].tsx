@@ -74,13 +74,16 @@ const  NextPage = () => {
            let state = true
            for(let i=0; i<rulesList.length;i++ ){
                let amount = 0
+               // check your nft balance
                for (let x = 0; x < nfts.length; x++) {
-                   // @ts-ignore
-                   if(rulesList[i].smart_contract_address == nfts[x].package){
+                   console.log('rulesList[i].smart_contract_address',rulesList[i].smart_contract_address)
+                   console.log('nfts[x].package',nfts[x].packageObjectId)
+                   if(rulesList[i].smart_contract_address == nfts[x].packageObjectId){
                        amount++
                    }
                }
-               if( amount >= rulesList[i].min_token_amount && amount <= rulesList[i].max_token_amount ){
+               console.log(amount)
+               if( amount >= Number(rulesList[i].min_token_amount) && amount <= Number(rulesList[i].max_token_amount) ){
                    const rolesRes = await client.callApi('v1/Verify/VerifyUserSucc', {
                        role_id: rulesList[i].role_id, user_id: userDetail.id, guild_id: guildDetail.id
                    });
@@ -92,8 +95,7 @@ const  NextPage = () => {
            }
            if(state){
                setOpenLoading(false)
-               // location.replace("/verify/result")
-
+               await router.push("/verify/result")
            }else {
                setOpenLoading(false)
                setVerifyState({state:false,type:"Verify",hash: ""})
