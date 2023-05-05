@@ -2,7 +2,7 @@ import {Dialog, Transition} from "@headlessui/react";
 import {Fragment, useEffect, useState} from "react";
 import {HomeIcon, XMarkIcon} from "@heroicons/react/24/outline";
 import {useAtom} from "jotai";
-import {DiscordList, DiscordUser, MobileMenuOpen, SelectDiscordList, USER_ID} from "../../jotai";
+import {DiscordList, DiscordUser, MobileMenuOpen, SelectDiscordList,} from "../../jotai";
 import { useRouter } from 'next/router'
 import Link from "next/link";
 import {client} from "../../client";
@@ -11,10 +11,8 @@ import addId from "../../pages/dashboard/channel/add/[...addId]";
 import Pop_up_box from "../pop_up_box";
 import Loading from "../loading";
 const navigation = [
-
-    { name: 'TGRs',href:'/config',current: false },
+    { name: 'TGRs',href:'/config/',current: false },
     { name: 'Bot Config', href: '/',current: true },
-
 ]
 
 function classNames(...classes) {
@@ -50,6 +48,7 @@ const Left_header = () =>{
     useEffect(()=>{
         if (router.isReady) {
 
+            console.log(router.pathname)
             const query = async () =>{
                 setUserInfo(discordUser)
                 console.log(userInfo)
@@ -112,7 +111,7 @@ const Left_header = () =>{
                             <a
 
                                 className={classNames(
-                                    item.current ? ' text-white' : 'text-white/20',
+                                    router.pathname == `/dashboard/channel${item.href}[id]` ? ' text-white' : 'text-white/20',
                                     'group flex w-full  items-center  text-sm  font-medium'
                                 )}
                             >
