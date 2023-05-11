@@ -48,7 +48,7 @@ const Config = () =>{
                     <Top_header/>
                     {/* Main content */}
 
-                    <div className={"h-screen  overflow-y-auto bg-black p-10"}>
+                    <div className={"h-screen  overflow-y-auto bg-[#1E1F24] p-10"}>
 
                         <div className={openState?"":"hidden"}>
                         <div className={checkState?"rounded-md bg-green-300/50 p-4 py-6  xl:w-1/2":"hidden"}>
@@ -75,7 +75,7 @@ const Config = () =>{
                                 </div>
                             </div>
                         </div>
-                        <div className={checkState?"hidden":"rounded-md bg-yellow-50 p-4 py-6  xl:w-1/2"}>
+                        <div className={checkState?"hidden":"rounded-md bg-yellow-50 p-4 py-6  xl:w-1/3"}>
                             <div className="flex">
                                 <div className="flex-shrink-0">
                                     <ExclamationTriangleIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
@@ -104,14 +104,14 @@ const Config = () =>{
                         </div>
                         </div>
 
-                        <div className="text-white text-2xl font-semibold mt-5">
+                        <div className="text-white text-2xl font-semibold mt-5 pb-5 border-b border-[#2B2C33]">
                             Bot config
                         </div>
-                        <div className="pt-10 grid grid-cols-1 gap-4 text-white xl:w-1/2 2xl:w-4/12">
-                            <div className="flex justify-between items-center pb-5">
+                        <div className=" pt-5 grid grid-cols-1 gap-4 text-white xl:w-1/2 2xl:w-5/12">
+                            <div className="flex justify-between items-center  bg-[#33353D] rounded-lg p-6">
                                 <div>
                                     Background balance check
-                                    <div className="text-neutral-500 text-sm mt-2">
+                                    <div className="text-[#777A8E] text-sm mt-2">
                                         Membership verification in regular intervals is enabled.
                                     </div>
                                 </div>
@@ -166,15 +166,15 @@ const Config = () =>{
 
                             </div>
 
-                            <div className="flex justify-between items-center border-t border-neutral-500 pt-5">
+                            <div className="flex justify-between items-center bg-[#33353D] rounded-lg p-6">
                                 <div>
                                     Check Bot Configuration
-                                    <div className="text-neutral-500  text-sm mt-2">
+                                    <div className="text-[#777A8E]  text-sm mt-2">
                                         Check if the bot is properly configured
                                     </div>
                                 </div>
 
-                                <button onClick={check}  className={classNames(checkLoading?"bg-white text-black":"hover:bg-neutral-900 duration-500",'border border-white rounded-xl text-center px-10 py-2 ')}>
+                                <button onClick={check}  className={classNames(checkLoading?"bg-white text-black":"bg-[#5D616F]",' rounded-xl text-center px-10 py-2 ')}>
                                     {checkLoading?"Checking...":"Check configuration"}
                                 </button>
 

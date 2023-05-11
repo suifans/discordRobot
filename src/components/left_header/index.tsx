@@ -7,11 +7,11 @@ import { useRouter } from 'next/router'
 import Link from "next/link";
 import {client} from "../../client";
 import id from "../../pages/dashboard/channel/[id]";
-import addId from "../../pages/dashboard/channel/add/[...addId]";
+import addId from "../../pages/dashboard/channel/add1/[...addId]";
 import Pop_up_box from "../pop_up_box";
 import Loading from "../loading";
 const navigation = [
-    { name: 'TGRs',href:'/config/',current: false },
+    { name: 'TGRs',href:'/tags/',current: false },
     { name: 'Bot Config', href: '/',current: true },
 ]
 
@@ -69,50 +69,46 @@ const Left_header = () =>{
 
             <div className="hidden w-80 overflow-y-auto md:block">
 
-                <div className="flex w-full  h-screen ">
-
-                    <div className="p-4  bg-neutral-900 ">
+                <div className=" w-full  h-screen flex flex-col justify-between border-r border-[#2B2C33]">
+                    <div className="flex h-screen">
+                    <div className="p-4  bg-[#14151A] border-r  border-[#1E1F24] ">
                         <img
-                            className="border-b  w-12 h-12  pb-2"
-                            src="https://cc.collab.land/static/media/Logo-Mark-Color.cfa3e870.svg"
+                            className="border-b border-[#2B2C33] w-12 h-12  rounded-full"
+                            src="/nft.png"
                             alt="Your Company"
                         />
                         <div className={discordList[0].name ==""? "hidden":"mt-3"}>
                             {discordList.map((item,index)=>(
                                 // border-l-2 border-amber-400
-                                    <button key={item.name} onClick={()=>{SelectDiscord(item.id)}} className={discordList[index].id== discordList[selectDiscordList].id?"border-l-2 border-amber-400":"flex mb-3"}>
-                                    <img className="rounded-lg w-12 h-12 border border-gray-100 " src={`https://cdn.discordapp.com/icons/${item.id}/${item.icon}.png`} alt=""/>
+                                    <button key={item.name} onClick={()=>{SelectDiscord(item.id)}} className={discordList[index].id== discordList[selectDiscordList].id?"border border-gray-100 rounded-lg":"flex mb-3"}>
+                                    <img className="rounded-lg w-12 h-12  " src={`https://cdn.discordapp.com/icons/${item.id}/${item.icon}.png`} alt=""/>
                                     </button>
                             ))}
                         </div>
 
                         <div className="gap-3 mt-3">
-                            <button onClick={AddDiscordList} className="text-white w-12 h-12 text-2xl  border-yellow-500 border rounded-lg ">
+                            <button onClick={AddDiscordList} className="text-white w-12 h-12 text-2xl text-[#2B2C33]  border-[#2B2C33] border rounded-lg ">
                                 <i className="fa fa-plus" aria-hidden="true" />
                             </button>
 
                         </div>
                     </div>
-
-                    <div className=" h-screen w-full flex flex-col justify-between  bg-neutral-800  ">
+                    <div className="  w-full flex flex-col justify-between  bg-[#14151A]  ">
                         <div className="px-3 pt-3">
-                        <div className={"text-white p-3 flex items-center"}>
-                            {/*<img className="w-6 h-6 rounded-full mr-2" src="/discord 1.svg" alt=""/> */}
-                            {discordList[0].id =="" ? "---------" : `${discordList[selectDiscordList].name}`}
+                        <div className={"text-white py-3 flex items-center font-semibold text-xl"}>
+
+                            {discordList[0].id ==""? "---------" :`${discordList[selectDiscordList].name}`}
                         </div>
                             <div className="grid grid-cols-1 gap-4 mt-4">
-                                <div className="text-xs  font-medium text-gray-200">
-                                    Administration
-                                </div>
+
                         {navigation.map((item) => (
                             <Link key={item.name}
                                   href={`/dashboard/channel/${item.href}/${discordList[selectDiscordList].id}`}
                                   legacyBehavior>
                             <a
-
                                 className={classNames(
-                                    router.pathname == `/dashboard/channel${item.href}[id]` ? ' text-white' : 'text-white/20',
-                                    'group flex w-full  items-center  text-sm  font-medium'
+                                    router.pathname == `/dashboard/channel${item.href}[id]` || router.pathname == `/dashboard/channel${item.href}add1/[...addId]` || router.pathname == `/dashboard/channel${item.href}add2/[...addID]` ? ' text-white' : 'text-[#5D616F]',
+                                    'group flex w-full  items-center  text-sm  '
                                 )}
                             >
                                 <span className="">{item.name}</span>
@@ -121,21 +117,23 @@ const Left_header = () =>{
                         ))}
                             </div>
                     </div>
-                        <div className={userInfo.username!==""?"bg-neutral-700  px-4 py-3   items-center flex justify-between":"hidden"}>
-                            <div className="flex items-center">
-                                    <img className="rounded-full w-6 h-6" src={`https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}.png`} alt=""/>
-                                    <div className="text-sm text-white font-semibold ml-2">
-                                        {userInfo.username}
-                                    </div>
+                    </div>
+                    </div>
+                    <div className={userInfo.username!==""?"bg-[#14151A] border-[#2B2C33] border-t px-4 py-3   items-center flex justify-between":"hidden"}>
+                        <div className="flex items-center">
+                            <img className="rounded-lg w-10 h-10" src={`https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}.png`} alt=""/>
+                            <div className="text-sm text-white font-semibold ml-2">
+                                {userInfo.username}
                             </div>
-                            <div>
-                                <button onClick={()=>{setLoginOut(true)}} className="text-white text-xl text-gray-400">
-                                    <i className="fa fa-sign-out" aria-hidden="true" />
-                                </button>
-                            </div>
+                        </div>
+                        <div>
+                            <button onClick={()=>{setLoginOut(true)}} className="text-white text-xl text-gray-400">
+                                <i className="fa fa-sign-out" aria-hidden="true" />
+                            </button>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             {/* Mobile menu */}

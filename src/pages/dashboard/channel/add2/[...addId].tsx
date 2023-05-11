@@ -162,20 +162,23 @@ const Add = (props) =>{
                 <div className="w-full  overflow-hidden">
                     <Top_header/>
                     <Loading/>
-                        <div className="h-screen  overflow-y-auto bg-black p-10">
-                            <button onClick={()=>router.back()} className="text-white">
-                                👈 Back
-                            </button>
-                            <div className="text-white text-2xl font-semibold mt-4">
-                                <div className="flex items-center">
-                                    <div className={`w-4 h-4 rounded-sm  mr-2`} style={{backgroundColor:`#${role.color=="0"?"fafafa":Number(role.color).toString(16)}`}}>
-
+                        <div className="h-screen  overflow-y-auto bg-[#1E1F24] p-10">
+                            <div className="border-b pb-2.5 border-[#2B2C33]">
+                                <button onClick={()=>router.back()} className="text-[#696D7E] flex  items-center">
+                                    <img className="mr-2 " src="/back.svg" alt=""/> Back
+                                </button>
+                            </div>
+                            <div className="flex">
+                                <div className=" text-white text-2xl font-semibold mt-4 rounded-lg px-4 py-2 bg-[#33353D] ">
+                                    <div className="flex items-center ">
+                                        <div className={`w-4 h-4 rounded-sm  mr-2`} style={{backgroundColor:`#${role.color=="0"?"fafafa":Number(role.color).toString(16)}`}}>
+                                        </div>
+                                        <span className="text-sm font-medium">{role.name}</span>
                                     </div>
-                                    <span className="text-sm font-medium">{role.name}</span>
                                 </div>
                             </div>
-                            <div className="pt-5  ">
-                                <div className="mt-2 w-80 xl:w-100">
+                            <div className="pt-5  w-80 xl:w-100">
+                                <div className="rounded-lg p-4 bg-[#33353D]">
                                     <label htmlFor="email" className="flex justify-between text-sm font-medium text-gray-300">
                                         Description
                                     </label>
@@ -185,30 +188,30 @@ const Add = (props) =>{
                                             required
                                             autoComplete="off"
                                             placeholder="Description"
-                                            className="outline-none  w-full p-3 border  rounded-lg shadow-sm placeholder-gray-400  sm:text-sm"
+                                            className="outline-none  w-full p-3 border border-[#4B4D58] bg-[#33353D] text-[#606271] hover:text-white focus:text-white   rounded-lg shadow-sm placeholder-[#606271]  hover:border-white focus:border-white  sm:text-sm duration-300"
                                         />
                                     </div>
                                 </div>
 
-                                <div className="mt-4 w-80 xl:w-100">
+                                <div className="mt-4 rounded-lg p-4 bg-[#33353D]">
                                     <label htmlFor="Chain" className="flex justify-between text-sm font-medium text-gray-300">
                                        Chain Type
                                     </label>
-                                    <div className="mt-2 text-white py-3 font-semibold text-xl">
+                                    <div className="mt-2 text-[#777A8E] py-1 font-semibold ">
                                        Sui
                                     </div>
                                 </div>
 
-                                <div className="mt-4 w-80 xl:w-100">
+                                <div className="mt-4 rounded-lg p-4 bg-[#33353D]">
                                     <label htmlFor="Token" className="flex justify-between text-sm font-medium text-gray-300">
                                         Token Type
                                     </label>
-                                    <div className="mt-2 text-white py-3 font-semibold text-xl">
+                                    <div className="mt-2 text-[#777A8E] py-1 font-semibold ">
                                         NFT
                                     </div>
                                 </div>
 
-                                <div className="mt-4 w-80 xl:w-100">
+                                <div className="mt-4 rounded-lg p-4 bg-[#33353D]">
                                     <label htmlFor="Address" className="flex justify-between text-sm font-medium text-gray-300">
                                         Address
                                     </label>
@@ -218,12 +221,12 @@ const Add = (props) =>{
                                             required
                                             autoComplete="off"
                                             placeholder="Input address"
-                                            className="outline-none  w-full p-3 border  rounded-lg shadow-sm placeholder-gray-400  sm:text-sm"
+                                            className="outline-none  w-full p-3 border border-[#4B4D58] bg-[#33353D] text-[#606271] hover:text-white focus:text-white   rounded-lg shadow-sm placeholder-[#606271]  hover:border-white focus:border-white  sm:text-sm duration-300"
                                         />
                                     </div>
                                 </div>
 
-                                <div className="mt-4 w-80 xl:w-100 flex justify-between items-center">
+                                <div className="mt-4 rounded-lg p-4 bg-[#33353D] flex justify-between items-center">
                                     <div className="w-1/2">
                                     <label htmlFor="Min" className="flex justify-between text-sm font-medium text-gray-300">
                                         Min Amount
@@ -234,7 +237,7 @@ const Add = (props) =>{
                                             required
                                             autoComplete="off"
                                             placeholder="Enter min amount of token"
-                                            className="outline-none  w-full p-3 border  rounded-lg shadow-sm placeholder-gray-400  sm:text-sm"
+                                            className="outline-none  w-full p-3 border border-[#4B4D58] bg-[#33353D] text-[#606271] hover:text-white focus:text-white   rounded-lg shadow-sm placeholder-[#606271]  hover:border-white focus:border-white  sm:text-sm duration-300"
                                         />
                                     </div>
                                     </div>
@@ -248,7 +251,7 @@ const Add = (props) =>{
                                                 required
                                                 autoComplete="off"
                                                 placeholder="Enter max amount of token"
-                                                className="outline-none  w-full p-3 border  rounded-lg shadow-sm placeholder-gray-400  sm:text-sm"
+                                                className="outline-none  w-full p-3 border border-[#4B4D58] bg-[#33353D] text-[#606271] hover:text-white focus:text-white   rounded-lg shadow-sm placeholder-[#606271]  hover:border-white focus:border-white  sm:text-sm duration-300"
                                             />
                                         </div>
                                     </div>
@@ -267,7 +270,7 @@ const Add = (props) =>{
                                 {/*        />*/}
                                 {/*    </div>*/}
                                 {/*</div>*/}
-                                <button onClick={Save} className="bg-yellow-400 text-black px-8 mt-10 w-48 justify-center   py-2.5 rounded-lg text-sm flex items-center" >
+                                <button onClick={Save} className="bg-[#33353D] text-white px-8 mt-10 w-48 justify-center   py-2.5 rounded-lg text-sm flex items-center">
                                   Save
                                 </button>
                             </div>
